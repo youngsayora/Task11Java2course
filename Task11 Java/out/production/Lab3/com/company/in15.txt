@@ -1,0 +1,94 @@
+using System;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp3
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        //Функция рандома
+        static private double Rand(double a, double b, Random random)
+        {
+            double x = random.Next(300000);
+            x /= 300000;
+            return a + (b - a) * x;
+        }
+
+
+        /*private void button1_Click(object sender, EventArgs e)
+        {
+            int N = Convert.ToInt32(textBox1.Text);//количество отрезков
+
+            double[] f = new double[N];
+            double[] f2 = new double[N];
+
+            const long M = 10000L;//число экспериментов
+            const long M2 = 1000;
+            double x, x2, a = -2, b = 7, d;//плотность распределения в интервале (случайные значения)
+
+            double[] fx = new double[M];
+            double[] fx2 = new double[M2];
+
+            int n, n2;// номер отрезка, в который попала
+            d = (b - a) / N;//длина отрезка, на который будем делить
+            Random random = new Random();
+
+            double[] fxf = new double[N];
+            double[] fxf2 = new double[N];
+
+            for (int i = 0; i < fxf.Length; i++)
+            {
+                fxf[i] = i + a;
+                fxf2[i] = i + a;
+            }
+            for (long i = 0; i < M; i++)//цикл по числу экспериментов
+            {
+                x = Rand(a, b, random);//(обращение к датчику случайной величины);
+                fx[i] = x;
+                n = (int)((x - a) / (b - a) * N); //(вычисление номера отрезка n, в который по-пало значение случайной величины)
+                f[n] = f[n] + 1;//( при попадании числа х в n - й отрезок добавляем единицу в элемент массива )
+                listBox1.Items.Add(x);//вывод на экран случайных чисел
+            }
+            for (long i = 0; i < M2; i++)
+            {
+                x2 = Rand(a, b, random);
+                fx2[i] = x2;
+                n2 = (int)((x2 - a) / (b - a) * N);
+                f2[n2] = f2[n2] + 1;
+                listBox2.Items.Add(x2);
+            }
+            for (n = 0; n < N; n++) //Пересчет вероятности в плотность распределения вероятно-сти
+            {
+                f[n] = f[n] / M;
+                f[n] /= d;
+            }
+            for (n2 = 0; n2 < N; n2++)
+            {
+                f2[n2] = f2[n2] / M2;
+                f2[n2] /= d;
+            }
+            chart1.ChartAreas[0].AxisX.Minimum = a;
+            chart1.ChartAreas[0].AxisX.Maximum = b;
+            chart1.Series[0].Points.DataBindXY(fxf, f);// привязка значения X и значений Y то-чек данных,
+            chart1.Series[1].Points.DataBindXY(fxf2, f2);//входящих в коллекцию, к первому столбцу указанного источника данных.
+
+
+
+        }*/
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            listBox1.Items.Clear();
+            listBox2.Items.Clear();
+            chart1.Series[0].Points.Clear();
+            chart1.Series[1].Points.Clear();
+
+        }
+
+    }
+}
